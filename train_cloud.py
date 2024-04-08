@@ -2,7 +2,7 @@ import runhouse as rh
 
 
 def train_cloud():
-    cluster = rh.cluster(name="rh-cuda-gpu", instance_type="A10G:1")
+    cluster = rh.cluster(name="rh-cuda-gpu", instance_type="A10G:1").up_if_not()
     env = rh.env(name="llm_c_train",
                  setup_cmds=[
                      "python llm.c/prepro_tinyshakespeare.py",
